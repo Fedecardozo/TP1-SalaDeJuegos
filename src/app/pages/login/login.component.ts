@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Usuario } from '../../models/usuario';
+import { Router } from '@angular/router';
+import { UsersService } from '../../auth/services/users.service';
+import { Validacion } from '../../models/validacion';
 
 @Component({
   selector: 'app-login',
@@ -12,12 +15,20 @@ import { Usuario } from '../../models/usuario';
 export class LoginComponent {
   email: string = '';
   password: string = '';
+  private router: Router = inject(Router);
+  private userService: UsersService = inject(UsersService);
 
-  validarEmail() {
-    if (Usuario.isValidEmail(this.email)) {
-      console.log('Es un email valido');
-    } else {
-      console.log('No es un email valido');
+  acceder() {
+    if (Validacion.login(this.email, this.password)) {
+      this.userService
+        .login(this.email, this.password)
+        .then(() => {
+          //Agregar un spinner como que esta cargando
+          this.router.navigateByUrl('/home');
+        })
+        .catch(() => {
+          //Muestro un alert de que no esta registrado
+        });
     }
   }
 }

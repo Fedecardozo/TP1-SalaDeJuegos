@@ -5,11 +5,11 @@
 <form>
   <h3>Bienvenido</h3>
 
-  <label for="email">Usuario</label>
+  <label for="email">Correo</label>
   <input
     [(ngModel)]="email"
     type="text"
-    placeholder="Email o Usuario"
+    placeholder="Email"
     name="email"
     id="email"
   />
@@ -23,5 +23,5 @@
     id="password"
   />
 
-  <button (click)="validarEmail()">Iniciar Sesión</button>
+  <button (click)="acceder()">Iniciar Sesión</button>
 </form>
