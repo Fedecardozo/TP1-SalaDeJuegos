@@ -3,13 +3,25 @@
   <div class="shape"></div>
 </div>
 <form>
-  <h3>Login</h3>
+  <h3>Bienvenido</h3>
 
-  <label for="username">Username</label>
-  <input type="text" placeholder="Email o Usuario" id="username" />
+  <label for="email">Usuario</label>
+  <input
+    [(ngModel)]="email"
+    type="text"
+    placeholder="Email o Usuario"
+    name="email"
+    id="email"
+  />
 
-  <label for="password">Password</label>
-  <input type="password" placeholder="Contraseña" id="password" />
+  <label for="password">Clave</label>
+  <input
+    [(ngModel)]="password"
+    type="password"
+    placeholder="Contraseña"
+    name="password"
+    id="password"
+  />
 
-  <button>Iniciar Sesión</button>
+  <button (click)="validarEmail()">Iniciar Sesión</button>
 </form>
