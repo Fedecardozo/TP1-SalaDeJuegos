@@ -6,11 +6,12 @@ import { UsersService } from '../../auth/services/users.service';
 import { Validacion } from '../../models/validacion';
 import Swal from 'sweetalert2';
 import { Alert } from '../../models/alert';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, ButtonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
