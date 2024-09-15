@@ -1,3 +1,31 @@
 h1 {
-  color: white;
+  color: #f2f1ff;
+}
+
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 48%;
+  height: 70vh;
+}
+
+.img-home {
+  height: 750px;
+}
+.contenedor-btn-juegos {
+  width: 70%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.contenedor-texto {
+  padding: 10% 10% 0 10%;
+}
+
+p {
+  margin-bottom: 30px;
+  margin-top: 30px;
+  color: #b3a9ff;
 }

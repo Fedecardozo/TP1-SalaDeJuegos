@@ -1,51 +1,28 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#"
-      ><img src="img/icono.png" alt="logo" class="img-logo"
-    /></a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarCollapse"
-      aria-controls="navbarCollapse"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav me-auto mb-2 mb-md-0">
-        <li class="nav-item">
-          <button
-            class="nav-link active"
-            aria-current="page"
-            routerLink="login"
-          >
-            Iniciar Sesión
-          </button>
-        </li>
-        <li class="nav-item">
-          <button
-            class="nav-link active"
-            aria-current="page"
-            routerLink="registro"
-          >
-            Crear Cuenta
-          </button>
-        </li>
-        <li class="nav-item">
-          <button
-            class="nav-link active"
-            aria-current="page"
-            routerLink="about"
-          >
-            Quien soy
-          </button>
-        </li>
-      </ul>
-    </div>
-  </div>
+<nav class="navbar">
+  <ul>
+    <li>
+      <img
+        src="/img/icono.png"
+        alt="logo"
+        class="img-logo"
+        routerLink="/home"
+      />
+    </li>
+    <li><p-button label="Inicio" [text]="true" severity="secondary" /></li>
+    <li><p-button label="Quien soy" [text]="true" severity="secondary" /></li>
+  </ul>
+  <ul>
+    <li>
+      <p-button
+        label="Crear cuenta"
+        [outlined]="true"
+        [rounded]="true"
+        routerLink="registro"
+      />
+    </li>
+    <li>
+      <p-button label="Iniciar sesión" [rounded]="true" routerLink="login" />
+    </li>
+  </ul>
 </nav>
-
 <router-outlet />
