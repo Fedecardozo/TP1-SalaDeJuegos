@@ -4,6 +4,8 @@ import { Usuario } from '../../models/usuario';
 import { Router } from '@angular/router';
 import { UsersService } from '../../auth/services/users.service';
 import { Validacion } from '../../models/validacion';
+import Swal from 'sweetalert2';
+import { Alert } from '../../models/alert';
 
 @Component({
   selector: 'app-login',
@@ -26,8 +28,12 @@ export class LoginComponent {
           //Agregar un spinner como que esta cargando
           this.router.navigateByUrl('/home');
         })
-        .catch(() => {
+        .catch((error) => {
           //Muestro un alert de que no esta registrado
+          Alert.error(
+            'No se encuentra registrado',
+            'Verifique correo y contraseña ingresadas'
+          );
         });
     }
   }
