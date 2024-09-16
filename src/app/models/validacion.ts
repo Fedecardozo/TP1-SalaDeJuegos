@@ -18,4 +18,21 @@ export class Validacion {
       return true;
     }
   }
+  static regristrarse(
+    email: string,
+    password: string,
+    password2: string
+  ): boolean {
+    if (!Validacion.login(email, password)) {
+      return false;
+    } else if (password != password2) {
+      Alert.error(
+        'Las contraseñas no son iguales!',
+        'Verifique que las contraseñas sean iguales!'
+      );
+      return false;
+    } else {
+      return true;
+    }
+  }
 }

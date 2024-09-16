@@ -9,4 +9,12 @@ export class Alert {
       icon: 'error',
     });
   }
+
+  static exito(titulo: string, msj: string) {
+    Swal.fire({
+      title: titulo,
+      text: msj,
+      icon: 'success',
+    });
+  }
 }

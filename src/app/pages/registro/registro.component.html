@@ -1,0 +1,38 @@
+<form>
+  <h3>Registro</h3>
+  <label for="email">Correo</label>
+  <input
+    [(ngModel)]="email"
+    type="email"
+    placeholder="Email"
+    name="email"
+    id="email"
+    autocomplete="off"
+  />
+  <label for="password">Clave</label>
+  <input
+    [(ngModel)]="password"
+    type="password"
+    placeholder="Contraseña"
+    name="password"
+    id="password"
+    autocomplete="off"
+  />
+  <label for="password">Repetir clave</label>
+  <input
+    [(ngModel)]="password2"
+    type="password"
+    placeholder="Repetir contraseña"
+    name="repetirClave"
+    id="repetirClave"
+    autocomplete="off"
+  />
+  <div class="contenedor-btn">
+    <p-button
+      label="Registrarse"
+      [rounded]="true"
+      size="large"
+      (click)="registrarse()"
+    />
+  </div>
+</form>
