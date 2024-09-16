@@ -4,6 +4,7 @@ import { ButtonModule } from 'primeng/button';
 import { Validacion } from '../../models/validacion';
 import { UsersService } from '../../auth/services/users.service';
 import { Alert } from '../../models/alert';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -17,13 +18,16 @@ export class RegistroComponent {
   password: string = '';
   password2: string = '';
   private userService: UsersService = inject(UsersService);
+  private router: Router = inject(Router);
 
   registrarse() {
     if (Validacion.regristrarse(this.email, this.password, this.password2)) {
       this.userService
         .registrarse(this.email, this.password)
         .then(() => {
-          Alert.exito('Se registro exitosamente!', '');
+          Alert.exito('Se registro exitosamente!', '', () => {
+            this.router.navigateByUrl('/home');
+          });
         })
         .catch(() => {
           Alert.error(

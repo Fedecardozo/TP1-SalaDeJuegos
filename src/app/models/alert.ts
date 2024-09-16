@@ -10,11 +10,15 @@ export class Alert {
     });
   }
 
-  static exito(titulo: string, msj: string) {
+  static exito(titulo: string, msj: string, call: Function) {
     Swal.fire({
       title: titulo,
       text: msj,
       icon: 'success',
+    }).then((res) => {
+      if (res.isConfirmed) {
+        call();
+      }
     });
   }
 }
