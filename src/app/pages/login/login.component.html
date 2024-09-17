@@ -21,11 +21,13 @@
     autocomplete="off"
   />
   <div class="contenedor-btn">
+    <p-button (click)="acceder()" label="Iniciar sesión" [rounded]="true" />
     <p-button
-      (click)="acceder()"
-      label="Iniciar sesión"
+      label="Acceso rapido"
+      [outlined]="true"
       [rounded]="true"
-      size="large"
+      (click)="completarLogin()"
+      routerLink="registro"
     />
   </div>
 </form>

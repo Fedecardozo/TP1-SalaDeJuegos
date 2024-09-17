@@ -25,9 +25,13 @@ export class RegistroComponent {
       this.userService
         .registrarse(this.email, this.password)
         .then(() => {
-          Alert.exito('Se registro exitosamente!', '', () => {
-            this.router.navigateByUrl('/home');
-          });
+          Alert.exito(
+            'Se registro exitosamente!',
+            'Redirigiendo al home...',
+            () => {
+              this.router.navigateByUrl('/home');
+            }
+          );
         })
         .catch(() => {
           Alert.error(

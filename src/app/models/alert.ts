@@ -15,10 +15,10 @@ export class Alert {
       title: titulo,
       text: msj,
       icon: 'success',
+      showConfirmButton: false,
+      timer: 1500,
     }).then((res) => {
-      if (res.isConfirmed) {
-        call();
-      }
+      call();
     });
   }
 }

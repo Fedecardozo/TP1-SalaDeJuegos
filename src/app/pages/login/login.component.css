@@ -63,6 +63,7 @@ input {
   color: #e5e5e5;
 }
 .contenedor-btn {
-  text-align: center;
+  display: flex;
+  justify-content: space-around;
   margin-top: 20%;
 }

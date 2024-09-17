@@ -29,7 +29,7 @@ export class LoginComponent {
           //Agregar un spinner como que esta cargando
           this.router.navigateByUrl('/home');
         })
-        .catch((error) => {
+        .catch(() => {
           //Muestro un alert de que no esta registrado
           Alert.error(
             'No se encuentra registrado',
@@ -37,5 +37,10 @@ export class LoginComponent {
           );
         });
     }
+  }
+
+  completarLogin() {
+    this.email = 'fede@gmail.com';
+    this.password = '123456';
   }
 }
