@@ -1,33 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
-import { MenuItem } from 'primeng/api';
-import { MenubarModule } from 'primeng/menubar';
-import { BadgeModule } from 'primeng/badge';
-import { AvatarModule } from 'primeng/avatar';
-import { InputTextModule } from 'primeng/inputtext';
 import { CommonModule } from '@angular/common';
-import { RippleModule } from 'primeng/ripple';
+import { UsersService } from './auth/services/users.service';
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    RouterOutlet,
-    RouterLink,
-    ButtonModule,
-    MenubarModule,
-    BadgeModule,
-    AvatarModule,
-    InputTextModule,
-    CommonModule,
-    RippleModule,
-  ],
+  imports: [RouterOutlet, RouterLink, ButtonModule, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  items: MenuItem[] | undefined;
-  title = 'SalaDeJuegos';
+  ocultarbtnLogin: boolean = true;
+  ocultarbtnRegistro: boolean = true;
+  ocultarbtnLogout: boolean = true;
 
-  ngOnInit() {}
+  private userService: UsersService = inject(UsersService);
+
+  ngOnInit(): void {
+    this.userService.sesion(
+      () => {
+        this.hiddenBtns(true);
+      },
+      () => {
+        this.hiddenBtns(false);
+      }
+    );
+  }
+
+  hiddenBtns(estado: boolean) {
+    this.ocultarbtnRegistro = estado;
+    this.ocultarbtnLogin = estado;
+    this.ocultarbtnLogout = !estado;
+  }
+  cerraSesion() {
+    this.userService.cerrarSesion();
+    this.hiddenBtns(false);
+  }
 }

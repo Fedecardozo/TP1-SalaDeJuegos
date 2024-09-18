@@ -17,7 +17,7 @@ export class Alert {
       icon: 'success',
       showConfirmButton: false,
       timer: 1500,
-    }).then((res) => {
+    }).finally(() => {
       call();
     });
   }

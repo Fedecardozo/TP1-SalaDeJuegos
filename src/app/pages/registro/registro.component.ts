@@ -17,6 +17,7 @@ export class RegistroComponent {
   email: string = '';
   password: string = '';
   password2: string = '';
+  oculto: boolean = true;
   private userService: UsersService = inject(UsersService);
   private router: Router = inject(Router);
 

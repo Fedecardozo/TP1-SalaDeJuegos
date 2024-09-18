@@ -31,12 +31,28 @@
         label="Crear cuenta"
         [outlined]="true"
         [rounded]="true"
+        [hidden]="ocultarbtnRegistro"
         routerLink="registro"
       />
     </li>
     <li>
-      <p-button label="Iniciar sesión" [rounded]="true" routerLink="login" />
+      <p-button
+        label="Iniciar sesión"
+        [rounded]="true"
+        [hidden]="ocultarbtnLogin"
+        routerLink="login"
+      />
+    </li>
+    <li>
+      <p-button
+        label="Cerrar sesión"
+        [rounded]="true"
+        [hidden]="ocultarbtnLogout"
+        (click)="cerraSesion()"
+      />
     </li>
   </ul>
 </nav>
+
+<!-- 02:30:00 -->
 <router-outlet />
