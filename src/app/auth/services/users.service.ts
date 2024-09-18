@@ -16,13 +16,10 @@ export class UsersService {
 
   sesion(call: Function, callElse?: Function) {
     this.unSuscribe = this.auth.onAuthStateChanged((auth) => {
-      console.log(auth);
       if (auth?.email) {
-        call();
-      } else {
-        if (callElse !== undefined) {
-          callElse();
-        }
+        call(this.auth.currentUser?.email);
+      } else if (callElse !== undefined) {
+        callElse();
       }
     });
   }

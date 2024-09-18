@@ -45,9 +45,19 @@
     </li>
     <li>
       <p-button
+        icon="pi pi-user"
+        [label]="userEmail"
+        [hidden]="ocultarbtnUser"
+        [rounded]="true"
+      />
+    </li>
+    <li>
+      <p-button
         label="Cerrar sesión"
         [rounded]="true"
         [hidden]="ocultarbtnLogout"
+        severity="danger"
+        icon="pi pi-times"
         (click)="cerraSesion()"
       />
     </li>
