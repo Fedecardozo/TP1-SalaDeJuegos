@@ -9,6 +9,7 @@
       name="email"
       id="email"
       autocomplete="off"
+      (keyup.enter)="registrarse()"
     />
     <label for="password">Clave</label>
     <input
@@ -18,6 +19,7 @@
       name="password"
       id="password"
       autocomplete="off"
+      (keyup.enter)="registrarse()"
     />
     <label for="password">Repetir clave</label>
     <input
@@ -27,6 +29,7 @@
       name="repetirClave"
       id="repetirClave"
       autocomplete="off"
+      (keyup.enter)="registrarse()"
     />
     <div class="contenedor-btn">
       <p-button

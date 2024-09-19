@@ -9,6 +9,7 @@
     name="email"
     id="email"
     autocomplete="off"
+    (keyup.enter)="acceder()"
   />
 
   <label for="password">Clave</label>
@@ -19,6 +20,7 @@
     name="password"
     id="password"
     autocomplete="off"
+    (keyup.enter)="acceder()"
   />
   <div class="contenedor-btn">
     <p-button (click)="acceder()" label="Iniciar sesión" [rounded]="true" />
@@ -27,7 +29,6 @@
       [outlined]="true"
       [rounded]="true"
       (click)="completarLogin()"
-      routerLink="registro"
     />
   </div>
 </form>
