@@ -24,9 +24,11 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl('/home');
     });
   }
+
   ngOnDestroy(): void {
     this.userService.desuscribir();
   }
+
   acceder() {
     if (Validacion.login(this.email, this.password)) {
       this.userService.login(this.email, this.password).catch(() => {

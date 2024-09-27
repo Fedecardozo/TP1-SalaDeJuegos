@@ -26,43 +26,34 @@
     </li>
   </ul>
   <ul>
+    @if (this.correo) {
     <li>
-      <p-button
-        label="Crear cuenta"
-        [outlined]="true"
-        [rounded]="true"
-        [hidden]="ocultarbtnRegistro"
-        routerLink="registro"
-      />
-    </li>
-    <li>
-      <p-button
-        label="Iniciar sesión"
-        [rounded]="true"
-        [hidden]="ocultarbtnLogin"
-        routerLink="login"
-      />
-    </li>
-    <li>
-      <p-button
-        icon="pi pi-user"
-        [label]="userEmail"
-        [hidden]="ocultarbtnUser"
-        [rounded]="true"
-      />
+      <p-button icon="pi pi-user" [label]="this.correo" [rounded]="true" />
     </li>
     <li>
       <p-button
         label="Cerrar sesión"
         [rounded]="true"
-        [hidden]="ocultarbtnLogout"
         severity="danger"
         icon="pi pi-times"
         (click)="cerraSesion()"
       />
     </li>
+    }@else{
+    <li>
+      <p-button
+        label="Crear cuenta"
+        [outlined]="true"
+        [rounded]="true"
+        routerLink="registro"
+      />
+    </li>
+    <li>
+      <p-button label="Iniciar sesión" [rounded]="true" routerLink="login" />
+    </li>
+
+    }
   </ul>
 </nav>
 
-<!-- 02:30:00 -->
 <router-outlet />

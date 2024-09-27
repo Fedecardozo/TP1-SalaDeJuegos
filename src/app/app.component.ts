@@ -3,7 +3,6 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
 import { UsersService } from './auth/services/users.service';
-import { Auth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-root',
@@ -13,34 +12,21 @@ import { Auth } from '@angular/fire/auth';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  ocultarbtnLogin: boolean = true;
-  ocultarbtnRegistro: boolean = true;
-  ocultarbtnLogout: boolean = true;
-  ocultarbtnUser: boolean = true;
-  userEmail: string = '';
+  constructor(protected userService: UsersService) {}
 
-  private userService: UsersService = inject(UsersService);
+  correo: string | null = null;
 
   ngOnInit(): void {
     this.userService.sesion(
       (user: string) => {
-        this.userEmail = user;
-        this.hiddenBtns(true);
+        this.correo = user;
       },
       () => {
-        this.hiddenBtns(false);
+        this.correo = null;
       }
     );
   }
-
-  hiddenBtns(estado: boolean) {
-    this.ocultarbtnRegistro = estado;
-    this.ocultarbtnLogin = estado;
-    this.ocultarbtnLogout = !estado;
-    this.ocultarbtnUser = !estado;
-  }
   cerraSesion() {
     this.userService.cerrarSesion();
-    this.hiddenBtns(false);
   }
 }
