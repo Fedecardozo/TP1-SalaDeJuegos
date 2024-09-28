@@ -4,7 +4,6 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   Unsubscribe,
-  User,
 } from '@angular/fire/auth';
 
 @Injectable({
@@ -13,14 +12,17 @@ import {
 export class UsersService {
   private auth: Auth = inject(Auth);
   private unSuscribe?: Unsubscribe;
-  private user: User | null = null;
+  correo: any = '';
 
-  sesion(call: Function, call2?: Function) {
+  constructor() {
+    console.log('entro');
+
     this.unSuscribe = this.auth.onAuthStateChanged((auth) => {
       if (auth?.email) {
-        call(this.auth.currentUser?.email);
-      } else if (call2 !== undefined) {
-        call2();
+        this.correo = this.auth.currentUser?.email;
+      } else {
+        console.log('else');
+        this.correo = null;
       }
     });
   }

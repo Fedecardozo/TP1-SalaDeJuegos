@@ -20,24 +20,25 @@ export class LoginComponent implements OnInit {
   private userService: UsersService = inject(UsersService);
 
   ngOnInit(): void {
-    this.userService.sesion(() => {
+    if (this.userService.correo !== null) {
       this.router.navigateByUrl('/home');
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.userService.desuscribir();
+    }
   }
 
   acceder() {
     if (Validacion.login(this.email, this.password)) {
-      this.userService.login(this.email, this.password).catch(() => {
-        //Muestro un alert de que no esta registrado
-        Alert.error(
-          'No se encuentra registrado',
-          'Verifique correo y contraseña ingresadas'
-        );
-      });
+      this.userService
+        .login(this.email, this.password)
+        .then(() => {
+          this.router.navigateByUrl('/home');
+        })
+        .catch(() => {
+          //Muestro un alert de que no esta registrado
+          Alert.error(
+            'No se encuentra registrado',
+            'Verifique correo y contraseña ingresadas'
+          );
+        });
     }
   }
 

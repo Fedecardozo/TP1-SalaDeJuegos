@@ -26,9 +26,14 @@
     </li>
   </ul>
   <ul>
-    @if (this.correo) {
+    @if (this.userService.correo !== null) {
     <li>
-      <p-button icon="pi pi-user" [label]="this.correo" [rounded]="true" />
+      <!-- <p-button icon="pi pi-user" [label]="this.correo" [rounded]="true" /> -->
+      <p-button
+        icon="pi pi-user"
+        [label]="this.userService.correo"
+        [rounded]="true"
+      />
     </li>
     <li>
       <p-button
@@ -51,7 +56,6 @@
     <li>
       <p-button label="Iniciar sesión" [rounded]="true" routerLink="login" />
     </li>
-
     }
   </ul>
 </nav>

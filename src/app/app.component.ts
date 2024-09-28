@@ -16,16 +16,8 @@ export class AppComponent {
 
   correo: string | null = null;
 
-  ngOnInit(): void {
-    this.userService.sesion(
-      (user: string) => {
-        this.correo = user;
-      },
-      () => {
-        this.correo = null;
-      }
-    );
-  }
+  ngOnInit(): void {}
+
   cerraSesion() {
     this.userService.cerrarSesion();
   }
