@@ -25,6 +25,7 @@
       />
     </li>
   </ul>
+  @if(this.userService.correo !== undefined) {
   <ul>
     @if (this.userService.correo !== null) {
     <li>
@@ -58,6 +59,7 @@
     </li>
     }
   </ul>
+  }
 </nav>
 
 <router-outlet />

@@ -12,16 +12,13 @@ import {
 export class UsersService {
   private auth: Auth = inject(Auth);
   private unSuscribe?: Unsubscribe;
-  correo: any = '';
+  correo: string | null | undefined = undefined;
 
   constructor() {
-    console.log('entro');
-
     this.unSuscribe = this.auth.onAuthStateChanged((auth) => {
       if (auth?.email) {
         this.correo = this.auth.currentUser?.email;
       } else {
-        console.log('else');
         this.correo = null;
       }
     });
