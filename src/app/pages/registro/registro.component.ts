@@ -5,6 +5,8 @@ import { Validacion } from '../../models/validacion';
 import { UsersService } from '../../auth/services/users.service';
 import { Alert } from '../../models/alert';
 import { Router } from '@angular/router';
+import { DatabaseService } from '../../auth/services/database.service';
+import { Usuario } from '../../models/usuario';
 
 @Component({
   selector: 'app-registro',
@@ -20,12 +22,21 @@ export class RegistroComponent {
   oculto: boolean = true;
   private userService: UsersService = inject(UsersService);
   private router: Router = inject(Router);
+  private db: DatabaseService = inject(DatabaseService);
+
+  ngOnInit(): void {
+    if (this.userService.correo !== null) {
+      this.router.navigateByUrl('/home');
+    }
+  }
 
   registrarse() {
     if (Validacion.regristrarse(this.email, this.password, this.password2)) {
       this.userService
         .registrarse(this.email, this.password)
-        .then(() => {
+        .then((res) => {
+          console.log(res);
+          this.db.agregarUsuario(new Usuario(this.email, this.password));
           Alert.exito(
             'Se registro exitosamente!',
             'Redirigiendo al home...',
@@ -34,7 +45,7 @@ export class RegistroComponent {
             }
           );
         })
-        .catch(() => {
+        .catch((err) => {
           Alert.error(
             'El email ya se encuetra registrado!',
             'Verifique que el email sea el correcto!'

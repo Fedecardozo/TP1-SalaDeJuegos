@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   Unsubscribe,
 } from '@angular/fire/auth';
+import { DatabaseService } from './database.service';
 
 @Injectable({
   providedIn: 'root',

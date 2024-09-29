@@ -5,6 +5,7 @@ import { UsersService } from '../../auth/services/users.service';
 import { Validacion } from '../../models/validacion';
 import { Alert } from '../../models/alert';
 import { ButtonModule } from 'primeng/button';
+import { DatabaseService } from '../../auth/services/database.service';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
   email: string = '';
   password: string = '';
   private router: Router = inject(Router);
+  private db: DatabaseService = inject(DatabaseService);
   private userService: UsersService = inject(UsersService);
 
   ngOnInit(): void {
@@ -30,6 +32,7 @@ export class LoginComponent implements OnInit {
       this.userService
         .login(this.email, this.password)
         .then(() => {
+          this.db.addLogsUser(this.email);
           this.router.navigateByUrl('/home');
         })
         .catch(() => {
