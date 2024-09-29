@@ -26,10 +26,18 @@
     </li>
   </ul>
   @if(this.userService.correo !== undefined) {
-  <ul>
+  <ul class="w-55">
     @if (this.userService.correo !== null) {
     <li>
-      <!-- <p-button icon="pi pi-user" [label]="this.correo" [rounded]="true" /> -->
+      <p-button
+        icon="pi pi-envelope"
+        label="Chat"
+        severity="info"
+        [rounded]="true"
+        routerLink="chat"
+      />
+    </li>
+    <li>
       <p-button
         icon="pi pi-user"
         [label]="this.userService.correo"

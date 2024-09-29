@@ -1,0 +1,39 @@
+<div class="card">
+  <div class="card-header">Chat</div>
+  <div class="card-body">
+    <ul class="chat-list">
+      @for (item of this.listMessages; track $index) { @if (item.correo ===
+      this.userLogueado) {
+      <li class="out">
+        <div class="chat-body">
+          <div class="chat-message">
+            <h5>{{ item.correo }}</h5>
+            <p>{{ item.mensaje }}</p>
+            <p class="p-fecha">{{ this.convertirFecha(item.fecha) }}</p>
+          </div>
+        </div>
+      </li>
+      } @else {
+      <li class="in">
+        <div class="chat-body">
+          <div class="chat-message">
+            <h5>{{ item.correo }}</h5>
+            <p>{{ item.mensaje }}</p>
+            <p class="p-fecha">{{ this.convertirFecha(item.fecha) }}</p>
+          </div>
+        </div>
+      </li>
+      } }
+    </ul>
+  </div>
+  <div class="cont-input">
+    <input
+      type="text"
+      class="input-send"
+      [(ngModel)]="value"
+      (keyup.enter)="enviarMsj()"
+      placeholder="Escribe un mensaje..."
+    />
+    <p-button icon="pi pi-send" severity="info" (click)="enviarMsj()" />
+  </div>
+</div>

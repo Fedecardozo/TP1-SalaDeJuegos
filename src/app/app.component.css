@@ -5,6 +5,9 @@ ul {
   justify-content: space-around;
   width: 40%;
 }
+.w-55 {
+  width: 55%;
+}
 .img-logo {
   height: 80px;
   cursor: pointer;

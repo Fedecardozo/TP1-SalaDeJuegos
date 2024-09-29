@@ -14,8 +14,6 @@ import { UsersService } from './auth/services/users.service';
 export class AppComponent {
   constructor(protected userService: UsersService) {}
 
-  correo: string | null = null;
-
   ngOnInit(): void {}
 
   cerraSesion() {
