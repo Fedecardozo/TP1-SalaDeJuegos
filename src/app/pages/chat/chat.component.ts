@@ -18,14 +18,13 @@ import { Chat } from '../../models/chat';
 export class ChatComponent {
   userService: UsersService = inject(UsersService);
   db: DatabaseService = inject(DatabaseService);
-  userLogueado = this.userService.correo;
   value: string = '';
   subcripcion?: Subscription;
   listMessages: Chat[] = [];
 
   enviarMsj() {
-    if (this.value !== '' && this.userLogueado) {
-      this.db.addChat(this.value, this.userLogueado);
+    if (this.value !== '' && this.userService.correo) {
+      this.db.addChat(this.value, this.userService.correo);
       this.value = '';
     }
   }

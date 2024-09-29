@@ -3,6 +3,10 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: 'juegos',
+    loadComponent: () =>
+      import('./pages/juegos/contenedor/contenedor.component').then(
+        (m) => m.ContenedorComponent
+      ),
     children: [
       { path: '', redirectTo: 'ahorcado', pathMatch: 'full' },
       {
