@@ -1,0 +1,7 @@
+<div>
+  <div class="bg-green-500">
+    @for (item of this.letras; track $index) {
+    <p-button [label]="item" class="mr-2" [raised]="true" severity="warning" />
+    }
+  </div>
+</div>

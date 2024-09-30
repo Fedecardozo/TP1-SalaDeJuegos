@@ -1,12 +1,10 @@
 import { Routes } from '@angular/router';
+import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
 export const routes: Routes = [
   {
     path: 'juegos',
-    loadComponent: () =>
-      import('./pages/juegos/contenedor/contenedor.component').then(
-        (m) => m.ContenedorComponent
-      ),
+    ...canActivate(() => redirectUnauthorizedTo(['/login'])),
     children: [
       { path: '', redirectTo: 'ahorcado', pathMatch: 'full' },
       {
@@ -36,6 +34,7 @@ export const routes: Routes = [
     path: 'chat',
     loadComponent: () =>
       import('./pages/chat/chat.component').then((m) => m.ChatComponent),
+    ...canActivate(() => redirectUnauthorizedTo(['/login'])),
   },
   {
     path: 'login',

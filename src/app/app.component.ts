@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
 import { UsersService } from './auth/services/users.service';
@@ -13,10 +13,11 @@ import { UsersService } from './auth/services/users.service';
 })
 export class AppComponent {
   constructor(protected userService: UsersService) {}
-
+  router: Router = inject(Router);
   ngOnInit(): void {}
 
   cerraSesion() {
     this.userService.cerrarSesion();
+    this.router.navigateByUrl('home');
   }
 }
