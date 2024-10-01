@@ -1,7 +1,14 @@
 <div>
-  <div class="bg-green-500">
+  <div class="cont-btns">
     @for (item of this.letras; track $index) {
-    <p-button [label]="item" class="mr-2" [raised]="true" severity="warning" />
+    <p-button
+      [label]="item"
+      class="m-1"
+      [raised]="true"
+      severity="warning"
+      size="large"
+      (click)="letraPresionada(item)"
+    />
     }
   </div>
 </div>

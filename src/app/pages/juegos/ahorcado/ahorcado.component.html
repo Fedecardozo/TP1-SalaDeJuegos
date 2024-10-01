@@ -1,10 +1,25 @@
-<h2>{{ this.palabra }}</h2>
+<h1 class="text-center">
+  A&nbsp;&nbsp;&nbsp;H&nbsp;&nbsp;&nbsp;O&nbsp;&nbsp;&nbsp;R&nbsp;&nbsp;&nbsp;C&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;D&nbsp;&nbsp;&nbsp;O
+</h1>
+<br />
+<div class="flex align-items-center justify-content-center">
+  <div class="contenedor">
+    <div>
+      <app-mostrar-letra [palabra]="this.palabraMostrar"></app-mostrar-letra>
+    </div>
+    <!-- <div class="bg-green-500 width-100">
+      <div>
+        <img src="/icon/hangman.png" alt="hangman" />
+      </div>
 
-<div class="contenedor">
-  <div>
-    <app-mostrar-letra [palabra]="this.palabra"></app-mostrar-letra>
-  </div>
-  <div>
-    <app-ingresar-letra></app-ingresar-letra>
+      <div class="text-center">
+        <p>Le quedan {{ this.intentos }} intentos</p>
+      </div>
+    </div> -->
+    <div>
+      <app-ingresar-letra
+        (letraIngresada)="letraIngresada($event)"
+      ></app-ingresar-letra>
+    </div>
   </div>
 </div>

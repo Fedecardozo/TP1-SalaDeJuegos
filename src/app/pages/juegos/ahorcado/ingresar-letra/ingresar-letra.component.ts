@@ -1,10 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { StyleClassModule } from 'primeng/styleclass';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { ColorPickerModule } from 'primeng/colorpicker';
 @Component({
   selector: 'app-ingresar-letra',
   standalone: true,
-  imports: [ButtonModule, StyleClassModule],
+  imports: [
+    ButtonModule,
+    StyleClassModule,
+    ToggleButtonModule,
+    ColorPickerModule,
+  ],
   templateUrl: './ingresar-letra.component.html',
   styleUrl: './ingresar-letra.component.css',
 })
@@ -26,6 +33,7 @@ export class IngresarLetraComponent {
     'N',
     'Ñ',
     'O',
+    'P',
     'R',
     'S',
     'T',
@@ -36,4 +44,10 @@ export class IngresarLetraComponent {
     'Y',
     'Z',
   ];
+
+  @Output() letraIngresada = new EventEmitter<string>();
+
+  letraPresionada(letra: string) {
+    this.letraIngresada.emit(letra);
+  }
 }

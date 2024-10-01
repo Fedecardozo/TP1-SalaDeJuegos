@@ -38,4 +38,20 @@ export class Alert {
       call();
     });
   }
+
+  static exito2() {
+    Swal.fire({
+      title: 'GANASTE!!!',
+      imageUrl: 'icon/win.gif',
+      text: '¿Desea jugar el siguiente nivel?',
+      confirmButtonText: 'Jugar siguiente nivel',
+      cancelButtonText: 'Salir',
+      showCancelButton: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        //callback
+        console.log('confirmo');
+      }
+    });
+  }
 }

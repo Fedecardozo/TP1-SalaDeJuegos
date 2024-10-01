@@ -3,8 +3,8 @@ div {
   align-items: center;
   justify-content: center;
 }
-/* .cont-btns {
-  width: 40%;
+.cont-btns {
+  width: 80%;
   display: flex;
   flex-wrap: wrap;
-} */
+}

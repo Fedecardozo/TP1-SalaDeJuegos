@@ -8,5 +8,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './mostrar-letra.component.css',
 })
 export class MostrarLetraComponent {
-  @Input() palabra: string = '';
+  @Input() palabra: string[] = [];
 }
