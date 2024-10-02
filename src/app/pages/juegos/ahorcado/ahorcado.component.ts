@@ -28,9 +28,11 @@ export class AhorcadoComponent {
   palabraMostrar: string[] = [];
   contadorBuenas: number = 0;
   intentos: number = 5;
+  imagen: string = '';
 
   ngOnInit(): void {
     this.cargarPalabraVacia();
+    this.cambiarImagen();
   }
 
   private cargarPalabraVacia() {
@@ -48,11 +50,14 @@ export class AhorcadoComponent {
         } else this.router.navigateByUrl('/home');
       });
     } else if (this.intentos === 0) {
-      Alert.perder().then((result) => {
-        if (result.isConfirmed) {
-          this.repetirNivel();
-        } else this.router.navigateByUrl('/home');
-      });
+      //Asi muestra la imagen completa de cuando pierde
+      setTimeout(() => {
+        Alert.perder().then((result) => {
+          if (result.isConfirmed) {
+            this.repetirNivel();
+          } else this.router.navigateByUrl('/home');
+        });
+      }, 700);
     }
   }
 
@@ -68,6 +73,7 @@ export class AhorcadoComponent {
     this.intentos = 5;
     this.palabraMostrar = [];
     this.cargarPalabraVacia();
+    this.cambiarImagen();
   }
 
   letraIngresada(letra: string) {
@@ -80,7 +86,14 @@ export class AhorcadoComponent {
       }
     }
 
-    if (!flag) this.intentos--;
+    if (!flag) {
+      this.intentos--;
+      this.cambiarImagen();
+    }
     this.verificar();
+  }
+
+  cambiarImagen() {
+    this.imagen = 'ahorcado/' + this.intentos + '.png';
   }
 }
