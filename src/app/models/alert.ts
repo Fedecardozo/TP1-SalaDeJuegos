@@ -39,19 +39,37 @@ export class Alert {
     });
   }
 
-  static exito2() {
-    Swal.fire({
+  static ganar() {
+    return Swal.fire({
       title: 'GANASTE!!!',
       imageUrl: 'icon/win.gif',
+      imageWidth: 200,
+      imageHeight: 200,
       text: '¿Desea jugar el siguiente nivel?',
-      confirmButtonText: 'Jugar siguiente nivel',
       cancelButtonText: 'Salir',
+      confirmButtonText: 'Jugar siguiente nivel',
       showCancelButton: true,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        //callback
-        console.log('confirmo');
-      }
+      customClass: {
+        confirmButton: 'confirm-button-class',
+        cancelButton: 'cancel-button-class',
+      },
+    });
+  }
+
+  static perder() {
+    return Swal.fire({
+      title: 'PERDISTE!!!',
+      imageUrl: 'icon/perdiste.gif',
+      imageWidth: 200,
+      imageHeight: 200,
+      text: '¿Desea repetir el nivel?',
+      cancelButtonText: 'Salir',
+      confirmButtonText: 'Repetir nivel',
+      showCancelButton: true,
+      customClass: {
+        confirmButton: 'confirm-button-class',
+        cancelButton: 'cancel-button-class',
+      },
     });
   }
 }

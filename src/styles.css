@@ -9,3 +9,12 @@ body {
   background-position: center; /* Centra la imagen */
   background-repeat: no-repeat; /* Evita que la imagen se repita */
 }
+.confirm-button-class {
+  color: #200007; /* Cambia el color del texto a blanco */
+  background-color: #a78bfa; /* Fondo azul */
+}
+
+.cancel-button-class {
+  color: #200007; /* Cambia el color del texto a rojo */
+  background-color: #f87171; /* Fondo rojo oscuro */
+}

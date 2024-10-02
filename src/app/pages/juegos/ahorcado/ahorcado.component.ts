@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { IngresarLetraComponent } from './ingresar-letra/ingresar-letra.component';
 import { MostrarLetraComponent } from './mostrar-letra/mostrar-letra.component';
 import { Alert } from '../../../models/alert';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ahorcado',
@@ -20,8 +21,8 @@ export class AhorcadoComponent {
     'MANZANA',
     'NARANJA',
   ];
-
-  index: number = 4;
+  router: Router = inject(Router);
+  index: number = 0;
   palabra: string = this.palabras[this.index];
   lenPalabra: number = this.palabra.length;
   palabraMostrar: string[] = [];
@@ -29,6 +30,10 @@ export class AhorcadoComponent {
   intentos: number = 5;
 
   ngOnInit(): void {
+    this.cargarPalabraVacia();
+  }
+
+  private cargarPalabraVacia() {
     for (let index = 0; index < this.lenPalabra; index++) {
       if (!index) this.palabraMostrar.push(this.palabra[index]);
       else this.palabraMostrar.push('');
@@ -37,11 +42,32 @@ export class AhorcadoComponent {
 
   private verificar() {
     if (this.contadorBuenas === this.lenPalabra - 1) {
-      console.log('ganaste');
-      Alert.exito2();
+      Alert.ganar().then((result) => {
+        if (result.isConfirmed) {
+          this.siguienteNivel();
+        } else this.router.navigateByUrl('/home');
+      });
     } else if (this.intentos === 0) {
-      console.log('perdiste');
+      Alert.perder().then((result) => {
+        if (result.isConfirmed) {
+          this.repetirNivel();
+        } else this.router.navigateByUrl('/home');
+      });
     }
+  }
+
+  siguienteNivel() {
+    this.index++;
+    this.palabra = this.palabras[this.index];
+    this.lenPalabra = this.palabra.length;
+    this.repetirNivel();
+  }
+
+  repetirNivel() {
+    this.contadorBuenas = 0;
+    this.intentos = 5;
+    this.palabraMostrar = [];
+    this.cargarPalabraVacia();
   }
 
   letraIngresada(letra: string) {
