@@ -28,11 +28,9 @@ export class AhorcadoComponent {
   palabraMostrar: string[] = [];
   contadorBuenas: number = 0;
   intentos: number = 5;
-  imagen: string = '';
 
   ngOnInit(): void {
     this.cargarPalabraVacia();
-    this.cambiarImagen();
   }
 
   private cargarPalabraVacia() {
@@ -73,7 +71,6 @@ export class AhorcadoComponent {
     this.intentos = 5;
     this.palabraMostrar = [];
     this.cargarPalabraVacia();
-    this.cambiarImagen();
   }
 
   letraIngresada(letra: string) {
@@ -88,12 +85,7 @@ export class AhorcadoComponent {
 
     if (!flag) {
       this.intentos--;
-      this.cambiarImagen();
     }
     this.verificar();
-  }
-
-  cambiarImagen() {
-    this.imagen = 'ahorcado/' + this.intentos + '.png';
   }
 }

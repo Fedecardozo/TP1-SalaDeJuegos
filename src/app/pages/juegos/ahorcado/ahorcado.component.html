@@ -1,15 +1,20 @@
 <h1 class="text-center">
   A&nbsp;&nbsp;&nbsp;H&nbsp;&nbsp;&nbsp;O&nbsp;&nbsp;&nbsp;R&nbsp;&nbsp;&nbsp;C&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;D&nbsp;&nbsp;&nbsp;O
 </h1>
-<p class="text-center">Nivel: {{ this.index + 1 }}</p>
 <br />
 <div class="flex align-items-center justify-content-center">
   <div class="contenedor">
     <div>
       <app-mostrar-letra [palabra]="this.palabraMostrar"></app-mostrar-letra>
     </div>
-    <div>
-      <img [src]="this.imagen" alt="hangman" />
+    <div class="datos-juego flex align-items-center justify-content-evenly">
+      <div>
+        <img [src]="'ahorcado/' + this.intentos + '.png'" alt="hangman" />
+      </div>
+      <div>
+        <p>Nivel: {{ this.index + 1 }}</p>
+        <p>Te quedan {{ this.intentos }} intentos</p>
+      </div>
     </div>
     <div>
       <app-ingresar-letra
