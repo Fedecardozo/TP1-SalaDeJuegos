@@ -1,17 +1,17 @@
-<h1 class="text-center">Mayor o menor</h1>
+<h1 class="text-center texto-animado">Mayor o menor</h1>
 <div class="flex align-items-center justify-content-center">
   @if(this.path === '') {
-  <div class="spinner-centro">
+  <div class="centro">
     <i class="pi pi-spin pi-spinner" style="font-size: 5rem"></i>
   </div>
   } @else {
-  <div class="contenedor">
-    <h2>Puntos: {{ this.puntos }}</h2>
+  <div class="contenedor fondo-transparente">
+    <h2 class="texto-animado">Puntos: {{ this.puntos }}</h2>
     <div class="carta">
       @if(this.siguienteCartaPath !== '') {
       <img [src]="this.siguienteCartaPath" alt="mazo" />
       } @else {
-      <p>¿La siguiente carta es mayor o menor?</p>
+      <p class="texto-animado">¿La siguiente carta es mayor o menor?</p>
       }
     </div>
     <div class="cont-juego flex align-items-center justify-content-around">

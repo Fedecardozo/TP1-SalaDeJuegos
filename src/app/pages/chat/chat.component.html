@@ -1,13 +1,13 @@
 @if(this.spinner){
-<div class="contenedor">
+<div class="flex align-items-center justify-content-center mt-3">
   @if(this.userService.correo !== undefined) {
   <div class="card">
     <div class="card-header">Chat</div>
-    <div class="card-body">
-      <ul class="chat-list">
+    <div class="card-body" id="scroll">
+      <ul class="chat-list" id="ul-chats">
         @for (item of this.listMessages; track $index) { @if (item.correo ===
         this.userService.correo) {
-        <li class="out">
+        <li class="out" [id]="'li-' + $index">
           <div class="chat-body">
             <div class="chat-message">
               <h5>{{ item.correo }}</h5>
@@ -17,7 +17,7 @@
           </div>
         </li>
         } @else {
-        <li class="in">
+        <li class="in" [id]="'li-' + $index">
           <div class="chat-body">
             <div class="chat-message">
               <h5>{{ item.correo }}</h5>
@@ -44,7 +44,7 @@
   }
 </div>
 } @else {
-<div class="spinner-centro">
+<div class="centro">
   <i class="pi pi-spin pi-spinner" style="font-size: 5rem"></i>
 </div>
 }

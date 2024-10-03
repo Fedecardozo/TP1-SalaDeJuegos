@@ -1,8 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { UsersService } from '../../auth/services/users.service';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
-
 import { FormsModule } from '@angular/forms';
 import { DatabaseService } from '../../auth/services/database.service';
 import { Subscription } from 'rxjs';
@@ -44,8 +43,17 @@ export class ChatComponent {
       });
   }
 
+  ngAfterViewChecked(): void {
+    const scroll = document.getElementById('scroll');
+    if (scroll !== null) {
+      scroll.scrollTo({
+        top: scroll.scrollHeight,
+        behavior: 'smooth',
+      });
+    }
+  }
+
   ngOnDestroy(): void {
-    console.log('se ejecuto destroy');
     this.subcripcion?.unsubscribe();
   }
 }
