@@ -15,7 +15,7 @@ export class AhorcadoComponent {
   palabras: string[] = [
     'PERRO',
     'GATO',
-    'ELEFANTE',
+    'CELULAR',
     'DINOSAURIO',
     'BANANA',
     'MANZANA',
@@ -24,7 +24,6 @@ export class AhorcadoComponent {
   router: Router = inject(Router);
   index: number = 0;
   palabra: string = this.palabras[this.index];
-  lenPalabra: number = this.palabra.length;
   palabraMostrar: string[] = [];
   contadorBuenas: number = 0;
   intentos: number = 5;
@@ -34,14 +33,14 @@ export class AhorcadoComponent {
   }
 
   private cargarPalabraVacia() {
-    for (let index = 0; index < this.lenPalabra; index++) {
+    for (let index = 0; index < this.palabra.length; index++) {
       if (!index) this.palabraMostrar.push(this.palabra[index]);
       else this.palabraMostrar.push('');
     }
   }
 
   private verificar() {
-    if (this.contadorBuenas === this.lenPalabra - 1) {
+    if (this.palabraMostrar.join('') === this.palabra) {
       Alert.ganar('GANASTE!!!', '¿Desea jugar el siguiente nivel?').then(
         (result) => {
           if (result.isConfirmed) {
@@ -66,7 +65,6 @@ export class AhorcadoComponent {
   siguienteNivel() {
     this.index++;
     this.palabra = this.palabras[this.index];
-    this.lenPalabra = this.palabra.length;
     this.repetirNivel();
   }
 
@@ -79,8 +77,11 @@ export class AhorcadoComponent {
 
   letraIngresada(letra: string) {
     let flag: boolean = false;
-    for (let index = 0; index < this.lenPalabra; index++) {
-      if (this.palabra[index] === letra) {
+    for (let index = 0; index < this.palabra.length; index++) {
+      if (
+        this.palabra[index] === letra &&
+        this.palabraMostrar[index] !== letra
+      ) {
         this.contadorBuenas++;
         this.palabraMostrar[index] = letra;
         flag = true;
@@ -90,6 +91,7 @@ export class AhorcadoComponent {
     if (!flag) {
       this.intentos--;
     }
+
     this.verificar();
   }
 }
