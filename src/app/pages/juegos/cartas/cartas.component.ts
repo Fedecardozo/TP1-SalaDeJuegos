@@ -107,24 +107,24 @@ export class CartasComponent {
   }
 
   perder() {
-    Alert.perder(
-      'PERDISTE!!! ERA MENOR!',
-      'Puntos obtenidos ' + this.puntos
-    ).then((result) => {
-      if (result.isConfirmed) {
-        // Reiniciar juego
-        this.reiniciarJuego();
-      } else this.router.navigateByUrl('/home');
-    });
+    Alert.perder('PERDISTE!!!', 'Puntos obtenidos ' + this.puntos).then(
+      (result) => {
+        if (result.isConfirmed) {
+          // Reiniciar juego
+          this.reiniciarJuego();
+        } else this.router.navigateByUrl('/home');
+      }
+    );
   }
 
   ganar() {
-    Alert.ganador('GANASTE!!! ERA MAYOR!', 'Sumaste 100 puntos');
+    Alert.ganador('GANASTE!!!', 'Sumaste 100 puntos');
     this.puntos = this.puntos + 100;
   }
 
   reiniciarJuego() {
     this.sub?.unsubscribe();
+    this.path = '';
     this.sub = this.obtenerCartas();
     this.puntos = 0;
   }

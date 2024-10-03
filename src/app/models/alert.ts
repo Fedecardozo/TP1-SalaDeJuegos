@@ -34,6 +34,8 @@ export class Alert {
       icon: 'success',
       showConfirmButton: false,
       timer: 1500,
+      backdrop: true, // Esta opción asegura que el fondo sea oscuro
+      allowOutsideClick: false, // Impide cerrar al hacer clic fuera del modal
     }).finally(() => {
       call();
     });
@@ -49,6 +51,8 @@ export class Alert {
       cancelButtonText: 'Salir',
       confirmButtonText: 'Jugar siguiente nivel',
       showCancelButton: true,
+      backdrop: true, // Esta opción asegura que el fondo sea oscuro
+      allowOutsideClick: false, // Impide cerrar al hacer clic fuera del modal
       customClass: {
         confirmButton: 'confirm-button-class',
         cancelButton: 'cancel-button-class',
@@ -66,6 +70,8 @@ export class Alert {
       cancelButtonText: 'Salir',
       confirmButtonText: 'Repetir nivel',
       showCancelButton: true,
+      backdrop: true, // Esta opción asegura que el fondo sea oscuro
+      allowOutsideClick: false, // Impide cerrar al hacer clic fuera del modal
       customClass: {
         confirmButton: 'confirm-button-class',
         cancelButton: 'cancel-button-class',
@@ -82,6 +88,8 @@ export class Alert {
       text: texto,
       timer: 2000,
       showConfirmButton: false,
+      backdrop: true, // Esta opción asegura que el fondo sea oscuro
+      allowOutsideClick: false, // Impide cerrar al hacer clic fuera del modal
     });
   }
 
@@ -94,6 +102,8 @@ export class Alert {
       text: texto,
       timer: 2000,
       showConfirmButton: false,
+      backdrop: true, // Esta opción asegura que el fondo sea oscuro
+      allowOutsideClick: false, // Impide cerrar al hacer clic fuera del modal
     });
   }
 }

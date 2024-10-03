@@ -35,7 +35,6 @@ p {
 .btnfos {
   color: #fff;
   cursor: pointer;
-  position: relative;
   display: block;
   font-weight: 400;
   line-height: 45px;
@@ -45,26 +44,25 @@ p {
 }
 
 .btnfos-5 {
-  border: 0 solid;
+  outline: 2px solid transparent; /* Asegura espacio para el borde sin afectar el layout */
+  outline-offset: 0px;
   box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
-  outline: 1px solid;
-  outline-color: rgba(255, 255, 255, 0);
-  outline-offset: 0px;
-  text-shadow: none;
+  transition: outline-offset 1250ms cubic-bezier(0.19, 1, 0.22, 1),
+    box-shadow 1250ms cubic-bezier(0.19, 1, 0.22, 1);
   padding: 25px;
-  -webkit-transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
-  transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
-  outline-color: rgba(255, 255, 255, 0.5);
-  outline-offset: 0px;
   border-radius: 25px;
 }
 
 .btnfos-5:hover {
-  border: 1px solid;
+  outline-color: rgba(
+    255,
+    255,
+    255,
+    0.5
+  ); /* Define el color del outline al hacer hover */
+  outline-offset: 10px; /* Desplaza el outline hacia afuera para dar un efecto sin mover otros elementos */
   box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5),
     0 0 20px rgba(255, 255, 255, 0.2);
-  outline-offset: 15px;
-  outline-color: rgba(255, 255, 255, 0);
   text-shadow: 1px 1px 2px #427388;
 }
 
