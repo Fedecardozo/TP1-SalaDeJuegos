@@ -5,13 +5,13 @@
   } @else {
   <div class="contenedor">
     <h2>Puntos: {{ this.puntos }}</h2>
-    @if(this.siguienteCartaPath !== '') {
-    <div>
+    <div class="carta">
+      @if(this.siguienteCartaPath !== '') {
       <img [src]="this.siguienteCartaPath" alt="mazo" />
+      } @else {
+      <p>¿La siguiente carta es mayor o menor?</p>
+      }
     </div>
-    } @else {
-    <p>¿La siguiente carta es mayor o menor?</p>
-    }
     <div class="cont-juego flex align-items-center justify-content-around">
       <div>
         <button class="btnfos btnfos-5 bg-blue">
