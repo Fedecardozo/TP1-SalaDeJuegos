@@ -4,6 +4,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Usuario } from '../../models/usuario';
 import { LogUsuario } from '../../models/log-usuario';
 import { Chat } from '../../models/chat';
+import { Carta } from '../../models/carta';
 
 @Injectable({
   providedIn: 'root',
@@ -35,6 +36,11 @@ export class DatabaseService {
 
   getChats() {
     const col = this.firestore.collection('chats');
+    return col;
+  }
+
+  getCartas() {
+    const col = this.firestore.collection('cartas');
     return col;
   }
 }

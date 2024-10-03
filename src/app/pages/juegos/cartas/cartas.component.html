@@ -1,1 +1,46 @@
-<p>cartas works!</p>
+<h1 class="text-center">Mayor o menor</h1>
+<div class="flex align-items-center justify-content-center">
+  @if(this.path === '') {
+  <i class="pi pi-spin pi-spinner" style="font-size: 5rem"></i>
+  } @else {
+  <div class="contenedor">
+    <h2>Puntos: {{ this.puntos }}</h2>
+    @if(this.siguienteCartaPath !== '') {
+    <div>
+      <img [src]="this.siguienteCartaPath" alt="mazo" />
+    </div>
+    } @else {
+    <p>¿La siguiente carta es mayor o menor?</p>
+    }
+    <div class="cont-juego flex align-items-center justify-content-around">
+      <div>
+        <button class="btnfos btnfos-5 bg-blue">
+          <i
+            class="pi pi-arrow-down"
+            style="font-size: 5rem"
+            (click)="verificarMenor()"
+          ></i>
+        </button>
+        <p class="text-center">Menor</p>
+      </div>
+      <div>
+        <img src="/cartas/mazo.png" alt="mazo" />
+      </div>
+      <div>
+        <img [src]="this.path" alt="carta" />
+      </div>
+      <div>
+        <button class="btnfos btnfos-5 bg-orange">
+          <i
+            class="pi pi-arrow-up"
+            style="font-size: 5rem"
+            (click)="verificarMayor()"
+          ></i>
+        </button>
+        <p class="text-center">Mayor</p>
+      </div>
+    </div>
+  </div>
+
+  }
+</div>
