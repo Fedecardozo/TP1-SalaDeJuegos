@@ -1,7 +1,9 @@
 <h1 class="text-center">Mayor o menor</h1>
 <div class="flex align-items-center justify-content-center">
   @if(this.path === '') {
-  <i class="pi pi-spin pi-spinner" style="font-size: 5rem"></i>
+  <div class="spinner-centro">
+    <i class="pi pi-spin pi-spinner" style="font-size: 5rem"></i>
+  </div>
   } @else {
   <div class="contenedor">
     <h2>Puntos: {{ this.puntos }}</h2>

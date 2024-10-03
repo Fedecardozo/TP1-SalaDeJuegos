@@ -1,3 +1,4 @@
+@if(this.spinner){
 <div class="contenedor">
   @if(this.userService.correo !== undefined) {
   <div class="card">
@@ -42,3 +43,8 @@
 
   }
 </div>
+} @else {
+<div class="spinner-centro">
+  <i class="pi pi-spin pi-spinner" style="font-size: 5rem"></i>
+</div>
+}

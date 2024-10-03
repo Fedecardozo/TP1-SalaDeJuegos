@@ -21,6 +21,7 @@ export class ChatComponent {
   value: string = '';
   subcripcion?: Subscription;
   listMessages: Chat[] = [];
+  spinner: boolean = false;
 
   enviarMsj() {
     if (this.value !== '' && this.userService.correo) {
@@ -38,8 +39,8 @@ export class ChatComponent {
       .getChats()
       .valueChanges()
       .subscribe((next) => {
-        console.log(next);
         this.listMessages = next as Chat[];
+        this.spinner = true;
       });
   }
 
