@@ -42,19 +42,23 @@ export class AhorcadoComponent {
 
   private verificar() {
     if (this.contadorBuenas === this.lenPalabra - 1) {
-      Alert.ganar().then((result) => {
-        if (result.isConfirmed) {
-          this.siguienteNivel();
-        } else this.router.navigateByUrl('/home');
-      });
+      Alert.ganar('GANASTE!!!', '¿Desea jugar el siguiente nivel?').then(
+        (result) => {
+          if (result.isConfirmed) {
+            this.siguienteNivel();
+          } else this.router.navigateByUrl('/home');
+        }
+      );
     } else if (this.intentos === 0) {
       //Asi muestra la imagen completa de cuando pierde
       setTimeout(() => {
-        Alert.perder().then((result) => {
-          if (result.isConfirmed) {
-            this.repetirNivel();
-          } else this.router.navigateByUrl('/home');
-        });
+        Alert.perder('PERDISTE!!!', '¿Desea repetir el nivel?').then(
+          (result) => {
+            if (result.isConfirmed) {
+              this.repetirNivel();
+            } else this.router.navigateByUrl('/home');
+          }
+        );
       }, 700);
     }
   }

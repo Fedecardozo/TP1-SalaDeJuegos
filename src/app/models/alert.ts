@@ -39,13 +39,13 @@ export class Alert {
     });
   }
 
-  static ganar() {
+  static ganar(titulo: String, texto: string) {
     return Swal.fire({
-      title: 'GANASTE!!!',
+      title: titulo,
       imageUrl: 'icon/win.gif',
       imageWidth: 200,
       imageHeight: 200,
-      text: '¿Desea jugar el siguiente nivel?',
+      text: texto,
       cancelButtonText: 'Salir',
       confirmButtonText: 'Jugar siguiente nivel',
       showCancelButton: true,
@@ -56,13 +56,13 @@ export class Alert {
     });
   }
 
-  static perder() {
+  static perder(titulo: String, texto: string) {
     return Swal.fire({
-      title: 'PERDISTE!!!',
+      title: titulo,
       imageUrl: 'icon/perdiste.gif',
       imageWidth: 200,
       imageHeight: 200,
-      text: '¿Desea repetir el nivel?',
+      text: texto,
       cancelButtonText: 'Salir',
       confirmButtonText: 'Repetir nivel',
       showCancelButton: true,
@@ -70,6 +70,30 @@ export class Alert {
         confirmButton: 'confirm-button-class',
         cancelButton: 'cancel-button-class',
       },
+    });
+  }
+
+  static ganador(titulo: String, texto: string) {
+    return Swal.fire({
+      title: titulo,
+      imageUrl: 'icon/win.gif',
+      imageWidth: 200,
+      imageHeight: 200,
+      text: texto,
+      timer: 2000,
+      showConfirmButton: false,
+    });
+  }
+
+  static perdedor(titulo: string, texto: string) {
+    return Swal.fire({
+      title: titulo,
+      imageUrl: 'icon/perdiste.gif',
+      imageWidth: 200,
+      imageHeight: 200,
+      text: texto,
+      timer: 2000,
+      showConfirmButton: false,
     });
   }
 }
