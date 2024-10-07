@@ -28,6 +28,13 @@ export const routes: Routes = [
             (m) => m.PreguntadosComponent
           ),
       },
+      {
+        path: 'solitario',
+        loadComponent: () =>
+          import('./pages/juegos/solitario/solitario.component').then(
+            (m) => m.SolitarioComponent
+          ),
+      },
     ],
   },
   {

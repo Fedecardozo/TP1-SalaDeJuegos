@@ -1,0 +1,84 @@
+@if(this.path === '') {
+<div class="centro">
+  <i class="pi pi-spin pi-spinner" style="font-size: 5rem"></i>
+</div>
+} @else {
+<div class="flex align-items-center justify-content-center">
+  <div class="contenedor">
+    <main class="flex justify-content-between">
+      <section class="flex">
+        <div class="m-3">
+          <img src="/cartas/mazo.png" alt="mazo" />
+        </div>
+        <div class="m-3">
+          <img src="/cartas/10basto.png" alt="carta" />
+        </div>
+      </section>
+      <section>
+        <div class="flex justify-content-evenly">
+          <div class="m-3 cont-fila">
+            <img src="/cartas/12espada.png" alt="carta" />
+            @for (item of this.newCartas; track $index) {
+            <img
+              [src]="this.carpeta + item.path"
+              alt="carta"
+              [class]="'carta-' + ($index + 1)"
+            />
+            }
+          </div>
+          <div class="m-3 cont-fila">
+            <img src="/cartas/12basto.png" alt="carta" />
+            @for (item of this.newCartas; track $index) {
+            <img
+              [src]="this.carpeta + item.path"
+              alt="carta"
+              [class]="'carta-' + ($index + 1)"
+            />
+            }
+          </div>
+          <div class="m-3 cont-fila">
+            <img src="/cartas/12oro.png" alt="carta" />
+            @for (item of this.newCartas; track $index) {
+            <img
+              [src]="this.carpeta + item.path"
+              alt="carta"
+              [class]="'carta-' + ($index + 1)"
+            />
+            }
+          </div>
+          <div class="m-3 cont-fila">
+            <img src="/cartas/12copa.png" alt="carta" />
+            @for (item of this.newCartas; track $index) {
+            <img
+              [src]="this.carpeta + item.path"
+              alt="carta"
+              [class]="'carta-' + ($index + 1)"
+            />
+            }
+          </div>
+        </div>
+      </section>
+      <!-- opcion 1 -->
+      <section>
+        <div class="m-3"><img src="/cartas/1espada.png" alt="espada" /></div>
+        <div class="m-3"><img src="/cartas/1basto.png" alt="basto" /></div>
+        <div class="m-3"><img src="/cartas/1oro.png" alt="oro" /></div>
+        <div class="m-3"><img src="/cartas/1copa.png" alt="copa" /></div>
+      </section>
+    </main>
+
+    <!-- opcion 2 -->
+    <!-- <section>
+      <article class="flex">
+        <div class="m-3"><img src="/cartas/1espada.png" alt="espada" /></div>
+        <div class="m-3"><img src="/cartas/1basto.png" alt="basto" /></div>
+      </article>
+      <article class="flex">
+        <div class="m-3"><img src="/cartas/1oro.png" alt="oro" /></div>
+        <div class="m-3"><img src="/cartas/1copa.png" alt="copa" /></div>
+      </article>
+    </section> -->
+  </div>
+</div>
+
+}

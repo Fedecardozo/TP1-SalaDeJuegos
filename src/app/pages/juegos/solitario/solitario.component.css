@@ -1,0 +1,57 @@
+.contenedor {
+  width: 80%;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  background-color: rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(10px);
+}
+
+.cont-fila {
+  display: flex;
+  flex-direction: column;
+}
+
+.carta-1 {
+  position: absolute;
+  transform: translateY(50px);
+}
+
+.carta-2 {
+  position: absolute;
+  transform: translateY(100px);
+}
+
+.carta-3 {
+  position: absolute;
+  transform: translateY(150px);
+}
+
+.carta-4 {
+  position: absolute;
+  transform: translateY(200px);
+}
+
+.carta-5 {
+  position: absolute;
+  transform: translateY(250px);
+}
+
+.carta-6 {
+  position: absolute;
+  transform: translateY(300px);
+}
+
+.carta-7 {
+  position: absolute;
+  transform: translateY(350px);
+}
+
+.carta-8 {
+  position: absolute;
+  transform: translateY(400px);
+}
+
+.carta-9 {
+  position: absolute;
+  transform: translateY(450px);
+}
