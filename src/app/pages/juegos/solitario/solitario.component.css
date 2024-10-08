@@ -11,6 +11,30 @@
   flex-direction: column;
 }
 
+.carta-border {
+  height: 150px;
+  width: 100px;
+  border-radius: 10px;
+  /* border: 1px solid #fff; */
+  cursor: pointer;
+  animation: parpadeo 1.5s infinite alternate; /* Duración de la animación */
+}
+
+@keyframes parpadeo {
+  0% {
+    box-shadow: 0 0 7px 2px rgba(255, 255, 255, 0.6); /* Luz suave */
+    border-color: #fff;
+  }
+  100% {
+    box-shadow: 0 0 14px 4px rgba(255, 255, 255, 1); /* Luz más intensa */
+    border-color: #f2f2f2; /* Puedes cambiar el color del borde si lo deseas */
+  }
+}
+
+.carta-0 {
+  position: absolute;
+}
+
 .carta-1 {
   position: absolute;
   transform: translateY(50px);

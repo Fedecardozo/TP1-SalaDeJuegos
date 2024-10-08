@@ -14,6 +14,7 @@ export class SolitarioComponent {
   db: DatabaseService = inject(DatabaseService);
   carta?: Carta;
   cartas: Carta[] = [];
+  cartasHeader: Carta[] = [];
   newCartas: Carta[] = [];
   carpeta: string = '/cartas/';
   sub?: Subscription;
@@ -31,9 +32,20 @@ export class SolitarioComponent {
       .subscribe((next) => {
         //Obtengo las cartas
         this.cartas = next as Carta[];
-        this.newCartas = this.cartas.slice(1, 10);
-        console.log(this.cartas.slice(1, 10));
+        const numRandom = this.numeroRandom(this.cartas.length - 4);
+        this.cartasHeader = this.cartas.splice(numRandom, 4);
+        const numNewCartas = this.numeroRandom(this.cartas.length - 4);
+        this.newCartas = this.cartas.splice(numNewCartas, 4);
+
+        console.log(numRandom);
+        console.log(this.cartasHeader);
+        console.log(this.newCartas);
+        console.log(this.cartas);
         this.path = 'as';
       });
+  }
+
+  numeroRandom(max: number) {
+    return Math.floor(Math.random() * max);
   }
 }

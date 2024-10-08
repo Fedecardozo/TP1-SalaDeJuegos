@@ -7,63 +7,49 @@
   <div class="contenedor">
     <main class="flex justify-content-between">
       <section class="flex">
-        <div class="m-3">
+        <div class="m-3 carta-border">
           <img src="/cartas/mazo.png" alt="mazo" />
         </div>
-        <div class="m-3">
-          <img src="/cartas/10basto.png" alt="carta" />
+        <div class="m-3 carta-border">
+          @for (item of this.newCartas; track $index) {
+          <img
+            [src]="this.carpeta + item.path"
+            [alt]="item.valor + ' ' + item.palo"
+            class="carta-0"
+          />
+          }
         </div>
       </section>
       <section>
         <div class="flex justify-content-evenly">
-          <div class="m-3 cont-fila">
-            <img src="/cartas/12espada.png" alt="carta" />
-            @for (item of this.newCartas; track $index) {
-            <img
-              [src]="this.carpeta + item.path"
-              alt="carta"
-              [class]="'carta-' + ($index + 1)"
-            />
-            }
+          <div class="m-3 cont-fila carta-border">
+            <img [src]="this.carpeta + this.cartasHeader[0].path" alt="carta" />
           </div>
-          <div class="m-3 cont-fila">
-            <img src="/cartas/12basto.png" alt="carta" />
-            @for (item of this.newCartas; track $index) {
-            <img
-              [src]="this.carpeta + item.path"
-              alt="carta"
-              [class]="'carta-' + ($index + 1)"
-            />
-            }
+          <div class="m-3 cont-fila carta-border">
+            <img [src]="this.carpeta + this.cartasHeader[1].path" alt="carta" />
           </div>
-          <div class="m-3 cont-fila">
-            <img src="/cartas/12oro.png" alt="carta" />
-            @for (item of this.newCartas; track $index) {
-            <img
-              [src]="this.carpeta + item.path"
-              alt="carta"
-              [class]="'carta-' + ($index + 1)"
-            />
-            }
+          <div class="m-3 cont-fila carta-border">
+            <img [src]="this.carpeta + this.cartasHeader[2].path" alt="carta" />
           </div>
-          <div class="m-3 cont-fila">
-            <img src="/cartas/12copa.png" alt="carta" />
-            @for (item of this.newCartas; track $index) {
-            <img
-              [src]="this.carpeta + item.path"
-              alt="carta"
-              [class]="'carta-' + ($index + 1)"
-            />
-            }
+          <div class="m-3 cont-fila carta-border">
+            <img [src]="this.carpeta + this.cartasHeader[3].path" alt="carta" />
           </div>
         </div>
       </section>
       <!-- opcion 1 -->
       <section>
-        <div class="m-3"><img src="/cartas/1espada.png" alt="espada" /></div>
-        <div class="m-3"><img src="/cartas/1basto.png" alt="basto" /></div>
-        <div class="m-3"><img src="/cartas/1oro.png" alt="oro" /></div>
-        <div class="m-3"><img src="/cartas/1copa.png" alt="copa" /></div>
+        <div class="m-3 carta-border">
+          <!-- <img src="/cartas/1espada.png" alt="espada" /> -->
+        </div>
+        <div class="m-3 carta-border">
+          <!-- <img src="/cartas/1basto.png" alt="basto" /> -->
+        </div>
+        <div class="m-3 carta-border">
+          <!-- <img src="/cartas/1oro.png" alt="oro" /> -->
+        </div>
+        <div class="m-3 carta-border">
+          <!-- <img src="/cartas/1copa.png" alt="copa" /> -->
+        </div>
       </section>
     </main>
 
