@@ -1,1 +1,29 @@
+.texto {
+  width: 40%;
+  padding: 50px;
+}
+p {
+  font-size: 1.3rem;
+}
+h2 {
+  font-size: 2rem;
+}
+.imagen {
+  border-radius: 15px;
+}
+span {
+  color: #835cf6;
+  font-weight: 700;
+}
 
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  color: #f6f3ff;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  background-color: rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(10px);
+}
