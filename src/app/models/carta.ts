@@ -68,4 +68,29 @@ export class Carta {
     }
     return false;
   }
+
+  static equalsSoltarVariasHeader(
+    cartasHeader: Carta[],
+    newCartas: Carta[]
+  ): boolean {
+    //Si las nuevas cartas empiezan con 12 y el array esta vacio las carga
+    if (newCartas[0].valor === 12 && !cartasHeader.length) {
+      newCartas.forEach((item) => {
+        cartasHeader.push(item);
+      });
+      return true;
+    }
+    //Si el array no esta vacio y la primera carta el anterior de distinto palo la cargo
+    else if (
+      cartasHeader.length &&
+      !newCartas[0].equalsPalo(cartasHeader[cartasHeader.length - 1]) &&
+      newCartas[0].esValorAnterior(cartasHeader[cartasHeader.length - 1])
+    ) {
+      newCartas.forEach((item) => {
+        cartasHeader.push(item);
+      });
+      return true;
+    }
+    return false;
+  }
 }

@@ -41,13 +41,15 @@ export class AhorcadoComponent {
 
   private verificar() {
     if (this.palabraMostrar.join('') === this.palabra) {
-      Alert.ganar('GANASTE!!!', '¿Desea jugar el siguiente nivel?').then(
-        (result) => {
-          if (result.isConfirmed) {
-            this.siguienteNivel();
-          } else this.router.navigateByUrl('/home');
-        }
-      );
+      Alert.ganar(
+        'GANASTE!!!',
+        '¿Desea jugar el siguiente nivel?',
+        'Jugar siguiente nivel'
+      ).then((result) => {
+        if (result.isConfirmed) {
+          this.siguienteNivel();
+        } else this.router.navigateByUrl('/home');
+      });
     } else if (this.intentos === 0) {
       //Asi muestra la imagen completa de cuando pierde
       setTimeout(() => {

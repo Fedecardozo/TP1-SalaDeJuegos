@@ -3,6 +3,7 @@
   <i class="pi pi-spin pi-spinner" style="font-size: 5rem"></i>
 </div>
 } @else {
+<h1 class="text-center texto-animado">SOLITARIO CON CARTAS ESPAÑOLAS</h1>
 <div class="flex align-items-center justify-content-center">
   <div class="contenedor">
     <main class="flex justify-content-between">
@@ -42,7 +43,7 @@
               alt="carta"
               [class]="'carta-' + $index"
               pDraggable
-              (onDragStart)="dragStart(item, this.cartasHeader1)"
+              (onDragStart)="dragStartHeader(item, this.cartasHeader1)"
               (onDragEnd)="dragEnd()"
             />
             }
@@ -60,7 +61,7 @@
               pDroppable
               (onDrop)="dropHeader(2)"
               pDraggable
-              (onDragStart)="dragStart(item, this.cartasHeader2)"
+              (onDragStart)="dragStartHeader(item, this.cartasHeader2)"
               (onDragEnd)="dragEnd()"
             />
             }
@@ -78,7 +79,7 @@
               pDroppable
               (onDrop)="dropHeader(3)"
               pDraggable
-              (onDragStart)="dragStart(item, this.cartasHeader3)"
+              (onDragStart)="dragStartHeader(item, this.cartasHeader3)"
               (onDragEnd)="dragEnd()"
             />
             }
@@ -96,7 +97,7 @@
               pDroppable
               (onDrop)="dropHeader(4)"
               pDraggable
-              (onDragStart)="dragStart(item, this.cartasHeader4)"
+              (onDragStart)="dragStartHeader(item, this.cartasHeader4)"
               (onDragEnd)="dragEnd()"
             />
             }
@@ -113,6 +114,9 @@
             class="carta-0"
             pDroppable
             (onDrop)="dropLateral(1)"
+            pDraggable
+            (onDragStart)="dragStart(item, this.cartasLateral1)"
+            (onDragEnd)="dragEnd()"
           />
           }
         </div>
@@ -124,6 +128,9 @@
             class="carta-0"
             pDroppable
             (onDrop)="dropLateral(2)"
+            pDraggable
+            (onDragStart)="dragStart(item, this.cartasLateral2)"
+            (onDragEnd)="dragEnd()"
           />
           }
         </div>
@@ -135,6 +142,9 @@
             class="carta-0"
             pDroppable
             (onDrop)="dropLateral(3)"
+            pDraggable
+            (onDragStart)="dragStart(item, this.cartasLateral3)"
+            (onDragEnd)="dragEnd()"
           />
           }
         </div>
@@ -146,6 +156,9 @@
             class="carta-0"
             pDroppable
             (onDrop)="dropLateral(4)"
+            pDraggable
+            (onDragStart)="dragStart(item, this.cartasLateral4)"
+            (onDragEnd)="dragEnd()"
           />
           }
         </div>

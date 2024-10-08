@@ -41,7 +41,7 @@ export class Alert {
     });
   }
 
-  static ganar(titulo: String, texto: string) {
+  static ganar(titulo: String, texto: string, txtBtnConfirm: string) {
     return Swal.fire({
       title: titulo,
       imageUrl: 'icon/win.gif',
@@ -49,7 +49,7 @@ export class Alert {
       imageHeight: 200,
       text: texto,
       cancelButtonText: 'Salir',
-      confirmButtonText: 'Jugar siguiente nivel',
+      confirmButtonText: txtBtnConfirm,
       showCancelButton: true,
       backdrop: true, // Esta opción asegura que el fondo sea oscuro
       allowOutsideClick: false, // Impide cerrar al hacer clic fuera del modal
