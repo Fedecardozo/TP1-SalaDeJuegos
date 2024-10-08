@@ -3,6 +3,7 @@ import { DatabaseService } from '../../../auth/services/database.service';
 import { Carta } from '../../../models/carta';
 import { Subscription } from 'rxjs';
 import { DragDropModule } from 'primeng/dragdrop';
+import { Alert } from '../../../models/alert';
 
 @Component({
   selector: 'app-solitario',
@@ -19,10 +20,15 @@ export class SolitarioComponent {
   cartasHeader2: Carta[] = [];
   cartasHeader3: Carta[] = [];
   cartasHeader4: Carta[] = [];
+  cartasLateral1: Carta[] = [];
+  cartasLateral2: Carta[] = [];
+  cartasLateral3: Carta[] = [];
+  cartasLateral4: Carta[] = [];
   newCartas: Carta[] = [];
   carpeta: string = '/cartas/';
   sub?: Subscription;
   spinner: boolean = true;
+  referencia: Carta[] = [];
 
   ngOnInit(): void {
     //Cargo el array de cartas y obtengo la supcription
@@ -35,7 +41,10 @@ export class SolitarioComponent {
       .valueChanges()
       .subscribe((next) => {
         //Obtengo las cartas
-        this.cartas = next as Carta[];
+        const aux: Carta[] = next as Carta[];
+        aux.forEach((card) => {
+          this.cartas.push(new Carta(card.valor, card.palo, card.path));
+        });
 
         //Obtenego de forma aleatorias las 4 cartas del encabezado
         const numRandom = this.numeroRandom(this.cartas.length - 4);
@@ -51,29 +60,34 @@ export class SolitarioComponent {
       });
   }
 
-  dragStart(card: Carta) {
+  dragStart(card: Carta, array: Carta[]) {
     //Obtengo la carta que se esta por arrastrar
-    this.draggedCarta = card;
-    console.log('start');
+    this.draggedCarta = new Carta(card.valor, card.palo, card.path);
     console.log(this.draggedCarta);
+    //Lugar de donde se obtuvo
+    this.referencia = array;
   }
 
-  drop() {
+  dropHeader(numHeader: number) {
     //Soltar la carta
-    if (this.draggedCarta) {
-      //Una vez que se solto lo tengo que sacar del array
-      this.newCartas = this.newCartas.filter(
-        (item) => item !== this.draggedCarta
-      );
-      this.cartasHeader1.push(this.draggedCarta);
+    if (this.draggedCarta && this.soltarHeader(numHeader)) {
+      //Una vez que se solto saco el ultimo elemento del array
+      this.referencia.pop();
+    }
+  }
+
+  dropLateral(numLateral: number) {
+    //Si la carta esta seleccionada y soltar es true ingresa y saco del array la carta
+    if (this.draggedCarta && this.soltarLateral(numLateral)) {
+      //Una vez que se solto saco el ultimo elemento del array
+      this.referencia.pop();
     }
   }
 
   dragEnd() {
     //Una vez que se solto la carta lo vuelvo null
     this.draggedCarta = null;
-    console.log('end');
-    console.log(this.draggedCarta);
+    this.verificarJuego();
   }
 
   numeroRandom(max: number) {
@@ -99,6 +113,11 @@ export class SolitarioComponent {
       auxCartas.forEach((card) => {
         this.newCartas.push(card);
       });
+    } else {
+      const auxCartas: Carta[] = this.cartas.splice(0, this.cartas.length);
+      auxCartas.forEach((card) => {
+        this.newCartas.push(card);
+      });
     }
   }
 
@@ -106,5 +125,48 @@ export class SolitarioComponent {
     //De las cartas que quedaron en juego las tengo que volver a barajar
     this.cartas = [...this.newCartas];
     this.newCartas = [];
+  }
+
+  soltarLateral(numLateral: number): boolean {
+    if (this.draggedCarta) {
+      switch (numLateral) {
+        case 1:
+          return this.draggedCarta.equalSoltarLateral(this.cartasLateral1);
+        case 2:
+          return this.draggedCarta.equalSoltarLateral(this.cartasLateral2);
+        case 3:
+          return this.draggedCarta.equalSoltarLateral(this.cartasLateral3);
+        case 4:
+          return this.draggedCarta.equalSoltarLateral(this.cartasLateral4);
+      }
+    }
+    return false;
+  }
+
+  soltarHeader(numLateral: number): boolean {
+    if (this.draggedCarta) {
+      switch (numLateral) {
+        case 1:
+          return this.draggedCarta.equalSoltarHeader(this.cartasHeader1);
+        case 2:
+          return this.draggedCarta.equalSoltarHeader(this.cartasHeader2);
+        case 3:
+          return this.draggedCarta.equalSoltarHeader(this.cartasHeader3);
+        case 4:
+          return this.draggedCarta.equalSoltarHeader(this.cartasHeader4);
+      }
+    }
+    return false;
+  }
+
+  verificarJuego() {
+    if (
+      this.cartasLateral1.length > 11 &&
+      this.cartasLateral2.length > 11 &&
+      this.cartasLateral3.length > 11 &&
+      this.cartasLateral4.length > 11
+    ) {
+      Alert.ganar('GANASTE!!!', 'Complestate el juego!');
+    }
   }
 }
