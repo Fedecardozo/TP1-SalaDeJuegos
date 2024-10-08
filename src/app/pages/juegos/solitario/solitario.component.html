@@ -1,4 +1,4 @@
-@if(this.path === '') {
+@if(this.spinner) {
 <div class="centro">
   <i class="pi pi-spin pi-spinner" style="font-size: 5rem"></i>
 </div>
@@ -8,14 +8,21 @@
     <main class="flex justify-content-between">
       <section class="flex">
         <div class="m-3 carta-border">
-          <img src="/cartas/mazo.png" alt="mazo" />
+          @if(this.cartas.length){
+          <img src="/cartas/mazo.png" alt="mazo" (click)="barajar()" />
+          } @else {
+          <div class="falsa-carta" (click)="rebarajar()"></div>
+          }
         </div>
         <div class="m-3 carta-border">
-          @for (item of this.newCartas; track $index) {
+          @for (itemCarta of this.newCartas; track $index) {
           <img
-            [src]="this.carpeta + item.path"
-            [alt]="item.valor + ' ' + item.palo"
+            [src]="this.carpeta + itemCarta.path"
+            [alt]="itemCarta.valor + ' ' + itemCarta.palo"
             class="carta-0"
+            pDraggable
+            (onDragStart)="dragStart(itemCarta)"
+            (onDragEnd)="dragEnd()"
           />
           }
         </div>
@@ -23,16 +30,48 @@
       <section>
         <div class="flex justify-content-evenly">
           <div class="m-3 cont-fila carta-border">
-            <img [src]="this.carpeta + this.cartasHeader[0].path" alt="carta" />
+            @for (item of this.cartasHeader1; track $index) {
+            <img
+              pDroppable
+              (onDrop)="drop()"
+              [src]="this.carpeta + item.path"
+              alt="carta"
+              [class]="'carta-' + $index"
+            />
+            }
           </div>
-          <div class="m-3 cont-fila carta-border">
-            <img [src]="this.carpeta + this.cartasHeader[1].path" alt="carta" />
+          <div class="m-3 cont-fila carta-border" pDroppable (onDrop)="drop()">
+            @for (item of this.cartasHeader2; track $index) {
+            <img
+              [src]="this.carpeta + item.path"
+              alt="carta"
+              [class]="'carta-' + $index"
+              pDroppable
+              (onDrop)="drop()"
+            />
+            }
           </div>
-          <div class="m-3 cont-fila carta-border">
-            <img [src]="this.carpeta + this.cartasHeader[2].path" alt="carta" />
+          <div class="m-3 cont-fila carta-border" pDroppable (onDrop)="drop()">
+            @for (item of this.cartasHeader3; track $index) {
+            <img
+              [src]="this.carpeta + item.path"
+              alt="carta"
+              [class]="'carta-' + $index"
+              pDroppable
+              (onDrop)="drop()"
+            />
+            }
           </div>
-          <div class="m-3 cont-fila carta-border">
-            <img [src]="this.carpeta + this.cartasHeader[3].path" alt="carta" />
+          <div class="m-3 cont-fila carta-border" pDroppable (onDrop)="drop()">
+            @for (item of this.cartasHeader4; track $index) {
+            <img
+              [src]="this.carpeta + item.path"
+              alt="carta"
+              [class]="'carta-' + $index"
+              pDroppable
+              (onDrop)="drop()"
+            />
+            }
           </div>
         </div>
       </section>

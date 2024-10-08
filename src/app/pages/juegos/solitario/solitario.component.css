@@ -11,6 +11,11 @@
   flex-direction: column;
 }
 
+.falsa-carta {
+  height: 150px;
+  width: 100px;
+}
+
 .carta-border {
   height: 150px;
   width: 100px;
@@ -78,4 +83,10 @@
 .carta-9 {
   position: absolute;
   transform: translateY(450px);
+}
+
+:host ::ng-deep {
+  [pDraggable] {
+    cursor: move;
+  }
 }
