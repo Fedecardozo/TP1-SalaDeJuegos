@@ -1,8 +1,10 @@
 <h1 class="text-center texto-animado">PREGUNTADOS</h1>
-
 @if(this.pais !== null) {
 <main class="flex align-items-center justify-content-center">
   <section class="container">
+    <p class="texto-animado mb-3 ml-3">
+      {{ "Puntos: " + this.puntos }}
+    </p>
     <article class="flex justify-content-center">
       <div class="flex cont-img">
         <!-- Se carga la bandera de un pais -->
@@ -14,8 +16,8 @@
     <article class="opciones">
       <div class="flex justify-content-around cont-opcion">
         <div class="opcion">
-          <button>
-            <span>Button</span>
+          <button (click)="verificar(0)">
+            <span>{{ this.opciones[0] }}</span>
             <div class="top"></div>
             <div class="left"></div>
             <div class="bottom"></div>
@@ -23,8 +25,8 @@
           </button>
         </div>
         <div class="opcion">
-          <button>
-            <span>Button</span>
+          <button (click)="verificar(1)">
+            <span>{{ this.opciones[1] }}</span>
             <div class="top"></div>
             <div class="left"></div>
             <div class="bottom"></div>
@@ -34,8 +36,8 @@
       </div>
       <div class="flex justify-content-around cont-opcion">
         <div class="opcion">
-          <button>
-            <span>Button</span>
+          <button (click)="verificar(2)">
+            <span>{{ this.opciones[2] }}</span>
             <div class="top"></div>
             <div class="left"></div>
             <div class="bottom"></div>
@@ -43,8 +45,8 @@
           </button>
         </div>
         <div class="opcion">
-          <button>
-            <span>Button</span>
+          <button (click)="verificar(3)">
+            <span>{{ this.opciones[3] }}</span>
             <div class="top"></div>
             <div class="left"></div>
             <div class="bottom"></div>
