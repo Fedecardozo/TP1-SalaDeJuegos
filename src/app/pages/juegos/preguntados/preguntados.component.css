@@ -37,6 +37,7 @@ img {
 
 .cont-img {
   padding: 0;
+  max-height: 200px;
   margin-bottom: 2rem;
 }
 

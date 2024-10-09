@@ -58,8 +58,6 @@ export class PreguntadosComponent {
     //Cargar las opciones de manera aletoria
     this.opcOk = this.numeroRandom(4);
 
-    console.log(this.opcOk + 1);
-
     for (let index = 0; index < 4; index++) {
       if (this.pais) {
         if (this.opcOk === index) {
@@ -72,11 +70,6 @@ export class PreguntadosComponent {
   }
 
   verificar(opc: number) {
-    //devuelvo el pais al array
-    if (this.pais) {
-      this.listaPaises.push(this.pais);
-    }
-
     if (this.opcOk === opc) {
       Alert.ganar(
         'GANASTE!!',
