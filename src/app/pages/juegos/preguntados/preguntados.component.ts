@@ -85,6 +85,7 @@ export class PreguntadosComponent {
       ).then((res) => {
         if (res.isConfirmed) {
           this.reiniciarJuego();
+          this.puntos = this.puntos + 100;
         } else {
           this.router.navigateByUrl('/home');
         }
@@ -104,7 +105,6 @@ export class PreguntadosComponent {
     this.pais = null;
     this.opciones = [];
     this.opcOk = undefined;
-    this.puntos = this.puntos + 100;
     this.cargarPais();
     this.cargarOpciones();
   }
