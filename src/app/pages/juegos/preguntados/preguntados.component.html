@@ -1,85 +1,62 @@
-<div class="card-container">
-  <!-- Card 1 -->
-  <div class="card">
-    <div class="card-face front-face">
-      <span class="card-rank">10</span>
-      <span class="card-suit">Club</span>
-    </div>
-    <div class="card-face back-face">
-      <span class="card-rank">10</span>
-      <span class="card-suit">Club</span>
-    </div>
-  </div>
+<h1 class="text-center texto-animado">PREGUNTADOS</h1>
 
-  <!-- Card 2 -->
-  <div class="card">
-    <div class="card-face front-face">
-      <span class="card-rank">3</span>
-      <span class="card-suit">Spade</span>
-    </div>
-    <div class="card-face back-face">
-      <span class="card-rank">3</span>
-      <span class="card-suit">Spade</span>
-    </div>
-  </div>
+@if(this.pais !== null) {
+<main class="flex align-items-center justify-content-center">
+  <section class="container">
+    <article class="flex justify-content-center">
+      <div class="flex cont-img">
+        <!-- Se carga la bandera de un pais -->
+        <img [src]="this.pais.bandera" alt="Paises" />
+      </div>
+    </article>
 
-  <!-- Card 3 -->
-  <div class="card">
-    <div class="card-face front-face">
-      <span class="card-rank">K</span>
-      <span class="card-suit">Heart</span>
-    </div>
-    <div class="card-face back-face">
-      <span class="card-rank">K</span>
-      <span class="card-suit">Heart</span>
-    </div>
-  </div>
-
-  <!-- Card 4 -->
-  <div class="card">
-    <div class="card-face front-face">
-      <span class="card-rank">2</span>
-      <span class="card-suit">Diamond</span>
-    </div>
-    <div class="card-face back-face">
-      <span class="card-rank">2</span>
-      <span class="card-suit">Diamond</span>
-    </div>
-  </div>
-
-  <!-- Card 5 -->
-  <div class="card">
-    <div class="card-face front-face">
-      <span class="card-rank">8</span>
-      <span class="card-suit">Spade</span>
-    </div>
-    <div class="card-face back-face">
-      <span class="card-rank">8</span>
-      <span class="card-suit">Spade</span>
-    </div>
-  </div>
-
-  <!-- Card 6 -->
-  <div class="card">
-    <div class="card-face front-face">
-      <span class="card-rank">6</span>
-      <span class="card-suit">Heart</span>
-    </div>
-    <div class="card-face back-face">
-      <span class="card-rank">6</span>
-      <span class="card-suit">Heart</span>
-    </div>
-  </div>
-
-  <!-- Card 7 -->
-  <div class="card">
-    <div class="card-face front-face">
-      <span class="card-rank">9</span>
-      <span class="card-suit">Diamond</span>
-    </div>
-    <div class="card-face back-face">
-      <span class="card-rank">9</span>
-      <span class="card-suit">Diamond</span>
-    </div>
-  </div>
+    <!-- Las opciones -->
+    <article class="opciones">
+      <div class="flex justify-content-around cont-opcion">
+        <div class="opcion">
+          <button>
+            <span>Button</span>
+            <div class="top"></div>
+            <div class="left"></div>
+            <div class="bottom"></div>
+            <div class="right"></div>
+          </button>
+        </div>
+        <div class="opcion">
+          <button>
+            <span>Button</span>
+            <div class="top"></div>
+            <div class="left"></div>
+            <div class="bottom"></div>
+            <div class="right"></div>
+          </button>
+        </div>
+      </div>
+      <div class="flex justify-content-around cont-opcion">
+        <div class="opcion">
+          <button>
+            <span>Button</span>
+            <div class="top"></div>
+            <div class="left"></div>
+            <div class="bottom"></div>
+            <div class="right"></div>
+          </button>
+        </div>
+        <div class="opcion">
+          <button>
+            <span>Button</span>
+            <div class="top"></div>
+            <div class="left"></div>
+            <div class="bottom"></div>
+            <div class="right"></div>
+          </button>
+        </div>
+      </div>
+    </article>
+  </section>
+</main>
+} @else {
+<div class="centro">
+  <i class="pi pi-spin pi-spinner" style="font-size: 5rem"></i>
 </div>
+}
